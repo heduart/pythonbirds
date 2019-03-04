@@ -48,7 +48,3 @@ if __name__ == '__main__':
     # aparecem mais.
     del luciano.filhos
     print(f'Atributos filhos removido dinamicamente: {luciano.__dict__}')
-
-
-
-
