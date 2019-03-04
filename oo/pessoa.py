@@ -1,4 +1,4 @@
-# Herbert Duarte - O termo classe também pode ser utilizada como sinonimo de tipo.
+# O termo classe também pode ser utilizada como sinônimo de tipo.
 
 class Pessoa:
 
