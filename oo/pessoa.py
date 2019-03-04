@@ -5,14 +5,31 @@ class Pessoa:
     # para várias instâncias criadas.
     olhos = 2
 
+
     def __init__(self, *filhos, nome=None, idade=35):
         self.nome = nome
         self.idade = idade
         self.filhos = list(filhos)
 
+
     def cumprimentar(self):
         return f'Olá {id(self)}'
 
+
+    # O proprio pycharm costuma inserir o self ao criar o método, no caso do staticmethod isso não ocorre por-
+    # que não depende da instância de um objeto para o retorno.
+    @staticmethod
+    def metodo_estatico():
+        return 42
+
+
+    # Outro decorator é o class method, ele utiliza como inicializador o cls, fazendo uma alusão a class não
+    # sendo utilizado o class porque é uma palavra reservada. Ele deve ser utilizado quando se deseja acessar
+    # dados da própria classe. Para esse exemplo vamos retorna o nome da classe e acessar o atributo olhos da
+    # classe, portanto como eu tenho o cls eu posso acessar os atributos da classe nesse caso olhos.
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - olhos {cls.olhos}'
 
 if __name__ == '__main__':
     herbert = Pessoa(nome='Herbert', idade=39)
@@ -68,3 +85,13 @@ if __name__ == '__main__':
     Pessoa.olhos = 3
     print(f'\n{herbert.nome}, olhos: {herbert.olhos} - Memória: {id(herbert.olhos)}\n{herbert.__dict__}')
     print(f'{luciano.nome}, olhos: {luciano.olhos} - Memória: {id(herbert.olhos)}\n{luciano.__dict__}')
+
+    # Para demonstrar que os métodos estáticos não dependem do objeto vamos chamar o método static das duas
+    # forma. Desta forma se o atributo não for localizada pelo objeto (luciano) ele procura o atributo na
+    # classe.
+
+    print(f'\n\nChamando o método estático pela classe:\n{Pessoa.metodo_estatico()}\nChamando o método '
+          f'estático pelo objeto:\n{luciano.metodo_estatico()}')
+
+    print(f'\n\nAcessando pela classe: {Pessoa.nome_e_atributos_de_classe()} \n\nAcessando pelo objeto: '
+          f'{luciano.nome_e_atributos_de_classe()}')
