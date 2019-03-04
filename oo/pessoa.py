@@ -32,8 +32,23 @@ if __name__ == '__main__':
     for filho in luciano.filhos:
         print(f'{filho.nome} é filho(a) de {luciano.nome} ')
 
-
-
     # Atrinuindo um valor para o atributo de classe nome.
     print(f'\033[1;34mFazendo o teste com o atributo de classe nome: \033[1;31m{herbert.nome}.\033[m')
+
+    # Atributos dinâmicos: Python permite a criação de atributos em tempo de execução (não é uma boa prática),
+    # mas pode ser feito.
+
+    luciano.sobrenome = 'Ramalho'
+    # Imprimindo o atributo dinâmico para teste, esse atributo não aparece para os demais objetos criados.
+    print(f'Atributo: {luciano.nome}, atributo dinâmico: {luciano.sobrenome}')
+    print(f'__dict__ de Luciano: {luciano.__dict__}')
+    print(f'__dict__ de Herbert: {herbert.__dict__}')
+
+    # Também podemos remover atributos dinamicamente, no exemplo é possível verificar que os filhos não
+    # aparecem mais.
+    del luciano.filhos
+    print(f'Atributos filhos removido dinamicamente: {luciano.__dict__}')
+
+
+
 
