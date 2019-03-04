@@ -13,7 +13,7 @@ class Pessoa:
 if __name__ == '__main__':
     herbert = Pessoa(nome='Herbert', idade=39)
     ana = Pessoa(nome='Ana', idade=20)
-    # Passando o objeto herbert como atributo para o objeto luciano, indicando o filho
+    # Passando o objeto herbert e ana como atributo para o objeto luciano, indicando o filho
     luciano = Pessoa(herbert, ana, nome='Luciano', idade=63)
     # Forma errada de chamar a classe, passando p sem necessidade
 
