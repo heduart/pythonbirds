@@ -1,6 +1,10 @@
 # O termo classe também pode ser utilizada como sinônimo de tipo.
 
 class Pessoa:
+    # Criando um atributo de classe, utilizado para economizar memória quando um determinado dado é comum
+    # para várias instâncias criadas.
+    olhos = 2
+
     def __init__(self, *filhos, nome=None, idade=35):
         self.nome = nome
         self.idade = idade
@@ -48,3 +52,19 @@ if __name__ == '__main__':
     # aparecem mais.
     del luciano.filhos
     print(f'Atributos filhos removido dinamicamente: {luciano.__dict__}')
+
+    # Imprimindo o atributo de classe criado para compartilhar o mesmo dados pelas instâncias.
+    print(f'\n{herbert.nome}, olhos: {herbert.olhos} - Memória: {id(herbert.olhos)}\n{herbert.__dict__}')
+    print(f'{luciano.nome}, olhos: {luciano.olhos} - Memória: {id(herbert.olhos)}\n{luciano.__dict__}')
+
+
+    # Alterando o atributo de classe para um determinado objeto, nesse a alteração é feita somente para o
+    # atributo de classe do luciano.
+    luciano.olhos = 1
+    print(f'\n{luciano.nome}, olhos: {luciano.olhos} - Memória: {id(herbert.olhos)}\n{luciano.__dict__}')
+
+    # Podemos também fazer uma alteração para o atributo de classe diretamente, dessa forma todas as novas
+    # instâncias sofrerão alteração quando utilizar o atributo.
+    Pessoa.olhos = 3
+    print(f'\n{herbert.nome}, olhos: {herbert.olhos} - Memória: {id(herbert.olhos)}\n{herbert.__dict__}')
+    print(f'{luciano.nome}, olhos: {luciano.olhos} - Memória: {id(herbert.olhos)}\n{luciano.__dict__}')
