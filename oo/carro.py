@@ -1,5 +1,5 @@
 #
-import sklearn
+# import sklearn
 
 """Você deve criar uma classe carro que vai possuir dois atributos compostos para outras duas classes.
 
@@ -29,7 +29,8 @@ O     L
     >>> motor.acelerar()
     >>> motor.velocidade
     2
-    >>> motor.aceleraar()
+    >>> motor.acelerar()
+    >>> motor.velocidade
     3
     >>> motor.frear()
     >>> motor.velocidade
@@ -38,53 +39,87 @@ O     L
     >>> motor.velocidade
     0
 
-    >>>testando.direção
+    >>> # Testando a direção
     >>> direcao = Direcao()
     >>> direcao.valor
-    ‘Norte’
+    'Norte'
     >>> direcao.girar_a_direita()
-    >>> direção.valor
-    ‘Sul’
-    >>> Direcao.girar_a_direita()
-    >>> Direcao.gerar_a_direita()
-    ‘Oeste’
-    >>> direção.girar_a_direita
-    >>> direcao.valor()
-    ‘Norte’
-    >>> direcao.girar_a_esquer()
     >>> direcao.valor
-    ‘Sul’
+    'Leste'
+    >>> direcao.girar_a_direita()
+    >>> direcao.valor
+    'Sul'
+    >>> direcao.girar_a_direita()
+    >>> direcao.valor
+    'Oeste'
+    >>> direcao.girar_a_direita()
+    >>> direcao.valor
+    'Norte'
     >>> direcao.girar_a_esquerda()
     >>> direcao.valor
-    ‘Leste’
+    'Oeste'
     >>> direcao.girar_a_esquerda()
     >>> direcao.valor
-    ‘Norte’
+    'Sul'
+    >>> direcao.girar_a_esquerda()
+    >>> direcao.valor
+    'Leste'
+    >>> direcao.girar_a_esquerda()
+    >>> direcao.valor
+    'Norte'
 
     >>> carro = Carro(direcao, motor)
-    >>> carro.calcular_velodade
-    0
     >>> carro.calcular_velocidade()
+    0
+
+    >>> carro.acelerar()
     >>> carro.calcular_velocidade()
     1
+
     >>> carro.acelerar()
-    >>> carro.acelerar()
+    >>> carro.calcular_velocidade()
     2
     >>> carro.frear()
     >>> carro.calcular_velocidade()
     0
-    >>> carro.calcular_a_direcao()
-    ‘Norte’
-    >>> carro.girar_a_direcao()
-    >>> carro.calcular_a_direcao
-    ‘Leste’
+    >>> carro.calcular_direcao()
+    'Norte'
+    >>> carro.girar_a_direita()
+    >>> carro.calcular_direcao()
+    'Leste'
     >>> carro.girar_a_esquerda()
-    >>> carro.calcular_a_direrecao()
-    ‘Norte’
+    >>> carro.calcular_direcao()
+    'Norte'
     >>> carro.girar_a_esquerda()
-    >>> carro.calcular_a_direcao()
-    ‘Oeste’
+    >>> carro.calcular_direcao()
+    'Oeste'
 """
+
+class Carro:
+    def __init__(self, direcao, motor):
+        self.direcao = direcao
+        self.motor = motor
+
+    # No caso da velocidade o carro não se preocupa com calcular a velocidade, é delegado esse trabalho para
+    # por isso é uma composição.
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        return self.motor.acelerar()
+
+    def frear(self):
+        return self.motor.frear()
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def girar_a_direita(self):
+        return self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        return self.direcao.girar_a_esquerda()
+
 
 NORTE = 'Norte'
 SUL = 'Sul'
@@ -126,5 +161,78 @@ class Motor:
         self.velocidade += 1
 
     def frear(self):
-        self.velocidade += 2
+        self.velocidade -= 2
         self.velocidade = max(0, self.velocidade)
+
+
+# if __name__ == '__main__':
+#     # Testando motor
+#     motor = Motor()
+#     print(f'Verificando a velocidade: {motor.velocidade}')
+#     # 0
+#
+#     motor.acelerar()
+#     print(motor.velocidade)
+#     # 1
+#
+#     motor.acelerar()
+#     print(motor.velocidade)
+#     # 2
+#     motor.acelerar()
+#     print(motor.velocidade)
+#     # 3
+#     motor.frear()
+#     print(motor.velocidade)
+#     # 1
+#     motor.frear()
+#     print(motor.velocidade)
+#     # 0
+#
+#     print(f'\033[1:45mApresentando a direção do veículo: \033[m\n')
+#     # >>>testando.direção
+#     direcao = Direcao()
+#     print(direcao.valor)
+#     # ‘Norte’
+#     direcao.girar_a_direita()
+#     print(direcao.valor)
+#     # ‘Sul’
+#     direcao.girar_a_direita()
+#     print(direcao.valor)
+#     # ‘Oeste’
+#     direcao.girar_a_direita()
+#     print(direcao.valor)
+#     # ‘Norte’
+#     direcao.girar_a_esquerda()
+#     print(direcao.valor)
+#     # ‘Sul’
+#     direcao.girar_a_esquerda()
+#     print(direcao.valor)
+#     # 'Leste'
+#     direcao.girar_a_esquerda()
+#     print(direcao.valor)
+#     # ‘Norte’
+#
+#     carro = Carro(direcao, motor)
+#     print(carro.calcular_velocidade())
+#     # 0
+#     carro.acelerar()
+#     print(carro.calcular_velocidade())
+#     # 1
+#     carro.acelerar()
+#     print(carro.calcular_velocidade())
+#     # 2
+#     carro.frear()
+#     print(carro.calcular_velocidade())
+#     # 0
+#     carro.calcular_direcao()
+#     print(carro.calcular_direcao())
+#     # ‘Norte’
+#     carro.girar_a_direita()
+#     print(carro.calcular_direcao())
+#     # ‘Leste’
+#     carro.girar_a_esquerda()
+#     print(carro.calcular_direcao())
+#     # ‘Norte’
+#     carro.girar_a_esquerda()
+#     print(carro.calcular_direcao())
+#     # ‘Oeste’
