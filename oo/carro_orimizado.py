@@ -1,5 +1,3 @@
-#
-# import sklearn
 
 """Você deve criar uma classe carro que vai possuir dois atributos compostos para outras duas classes.
 
