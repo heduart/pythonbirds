@@ -87,11 +87,10 @@ if __name__ == '__main__':
     print(f'{luciano.nome}, olhos: {luciano.olhos} - Memória: {id(herbert.olhos)}\n{luciano.__dict__}')
 
     # Para demonstrar que os métodos estáticos não dependem do objeto vamos chamar o método static das duas
-    # forma. Desta forma se o atributo não for localizada pelo objeto (luciano) ele procura o atributo na
-    # classe.
-
+    # forma. Se o atributo não for localizada pelo objeto (luciano) ele procura o atributo na classe.
     print(f'\n\nChamando o método estático pela classe:\n{Pessoa.metodo_estatico()}\nChamando o método '
           f'estático pelo objeto:\n{luciano.metodo_estatico()}')
 
+    # 
     print(f'\n\nAcessando pela classe: {Pessoa.nome_e_atributos_de_classe()} \n\nAcessando pelo objeto: '
           f'{luciano.nome_e_atributos_de_classe()}')
