@@ -52,17 +52,16 @@ class Ator():
         :param intervalo: Intervalo a ser considerado
         :return:
         """
-
-        # pass
+        pass
 
 
 
 class Obstaculo(Ator):
-    pass
+    _caracter_ativo = 'O'
 
 
 class Porco(Ator):
-    pass
+    _caracter_ativo = '@'
 
 
 class DuploLancamentoExcecao(Exception):
@@ -118,7 +117,7 @@ class Passaro(Ator):
         :param tempo: tempo de jogo a ser calculada a posição
         :return: posição x, y
         """
-        return 1, 1
+        return self.x, self.y
 
 
     def lancar(self, angulo, tempo_de_lancamento):
