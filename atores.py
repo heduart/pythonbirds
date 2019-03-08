@@ -137,4 +137,4 @@ class PassaroAmarelo(Passaro):
 
 
 class PassaroVermelho(Passaro):
-    pass
+    _caracter_ativo = 'V'
