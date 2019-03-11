@@ -93,7 +93,7 @@ O     L
     >>> carro.calcular_direcao()
     'Oeste'
 """
-
+norte='direcao'
 
 class Carro:
     def __init__(self, direcao, motor):
