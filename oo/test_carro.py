@@ -1,6 +1,6 @@
 from unittest import TestCase
 from oo.carro import Motor
-from oo.carro import Direcao
+from oo.carro import Direcao, NORTE, SUL, LESTE, OESTE
 
 
 class CarroTestCase(TestCase):
@@ -32,4 +32,20 @@ class CarroTestCase(TestCase):
 
     def test_calcular_direcao(self):
         direcao = Direcao()
-        self.assertEqual('Norte', direcao.valor)
+        self.assertEqual(NORTE, direcao.valor)
+        direcao.girar_a_direita()
+        self.assertEqual(LESTE, direcao.valor)
+        direcao.girar_a_direita()
+        self.assertEqual(SUL, direcao.valor)
+        direcao.girar_a_direita()
+        self.assertEqual(OESTE, direcao.valor)
+        direcao.girar_a_direita()
+        self.assertEqual(NORTE, direcao.valor)
+        direcao.girar_a_esquerda()
+        self.assertEqual(OESTE, direcao.valor)
+        direcao.girar_a_esquerda()
+        self.assertEqual(SUL, direcao.valor)
+        direcao.girar_a_esquerda()
+        self.assertEqual(LESTE, direcao.valor)
+        direcao.girar_a_esquerda()
+        self.assertEqual(NORTE, direcao.valor)
